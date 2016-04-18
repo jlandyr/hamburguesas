@@ -26,6 +26,19 @@ for i in rango{
     }
 }
 
+let variableOpcional : Int? = 90
+
+if variableOpcional != nil {
+    
+    print("El valor es: \(variableOpcional!)")
+    
+}else{
+    print("El valor es: nil")
+}
+
+
+
+
 
 
 
