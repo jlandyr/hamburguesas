@@ -14,57 +14,44 @@ enum Velocidades : Int{
 
 class Auto {
     
-    var velocidad = Velocidades(velocidadInicial: Velocidades.Apagado)
+    var velocidad : Velocidades
     
     init()
     {
-        self.velocidad = Velocidades.Apagado
+        self.velocidad = .Apagado
     }
     func cambioDeVelocidad( ) -> ( actual : Int, velocidadEnCadena: String)
     {
-        if self.velocidad == Velocidades.Apagado {
-            
-//            return (Velocidades.Apagado.rawValue, "Apagado")
-            return (Velocidades.VelocidadBaja.rawValue, "Velocidad Baja")
+        var velocidadActual : Int
+        
+        var velocidadEnCadena : String
+        
+        switch velocidad {
+        case .Apagado:
+            velocidadEnCadena = "Apagado"
+            velocidadActual = velocidad.rawValue
+            velocidad = .VelocidadBaja
+        case .VelocidadBaja:
+            velocidadActual = velocidad.rawValue
+            velocidad = .VelocidadMedia
+            velocidadEnCadena = "Velocidad Baja"
+        case .VelocidadMedia:
+            velocidadActual = velocidad.rawValue
+            velocidad = .VelocidadAlta
+            velocidadEnCadena = "Velocidad Media"
+        case .VelocidadAlta:
+            velocidadEnCadena = "Velocidad Alta"
+            velocidadActual = velocidad.rawValue
+            velocidad = .VelocidadMedia
         }
-        else if self.velocidad == Velocidades.VelocidadBaja
-        {
-//            return (Velocidades.VelocidadBaja.rawValue, "Velocidad Baja")
-            return (Velocidades.VelocidadMedia.rawValue, "Velocidad Media")
-        }
-        else if self.velocidad == Velocidades.VelocidadMedia
-        {
-            return (Velocidades.VelocidadAlta.rawValue, "Velocidad Alta")
-//            return (Velocidades.VelocidadMedia.rawValue, "Velocidad Media")
-        }
-        else if self.velocidad == Velocidades.VelocidadAlta
-        {
-            return (Velocidades.VelocidadMedia.rawValue, "Velocidad Media")            
-//            return (Velocidades.VelocidadAlta.rawValue, "Velocidad Alta")
-        }
-        return (0, "nada")
+        
+        return (velocidadActual, velocidadEnCadena)
+
     }
 }
 
 var auto = Auto()
 
-for var i in 0...120
-{
-    
-    switch i{
-    case 0:
-        auto.velocidad = Velocidades.Apagado
-        break
-    case 20:
-        auto.velocidad = Velocidades.VelocidadBaja
-        break
-    case 50:
-        auto.velocidad = Velocidades.VelocidadMedia
-        break
-    case 120:
-        auto.velocidad = Velocidades.VelocidadAlta
-        break
-    default: break
-    }
+for i in 1...20{
     print(auto.cambioDeVelocidad())
 }
