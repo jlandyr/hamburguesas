@@ -55,3 +55,23 @@ var auto = Auto()
 for i in 1...20{
     print(auto.cambioDeVelocidad())
 }
+
+let color = UIColor(red: 120/255, green: 180/255, blue: 40/255, alpha: 1)
+arc4random() % 100
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
